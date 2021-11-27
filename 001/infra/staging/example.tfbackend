@@ -1,0 +1,5 @@
+bucket   = "sample-bucket"
+region   = "ap-northeast-1"
+key      = "sample/state.tfstate"
+encrypt  = true
+role_arn = "arn:aws:iam::111111111:role/sts-role-name"
