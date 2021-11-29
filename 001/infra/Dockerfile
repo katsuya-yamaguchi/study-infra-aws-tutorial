@@ -28,4 +28,3 @@ COPY ./modules ${INFRA_ROOT}/modules
 COPY ./staging ${INFRA_ROOT}/staging
 
 WORKDIR ${INFRA_ROOT}/${ENV}
-CMD ["/bin/ash", "-c", "while :; do sleep 10; done;"]
