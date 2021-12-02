@@ -6,7 +6,7 @@ terraform {
 provider "aws" {
   region = "ap-northeast-1"
   assume_role {
-    role_arn = var.sts_iam_role
+    role_arn = var.iam_role_for_terraform
   }
 }
 
