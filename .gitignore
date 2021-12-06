@@ -10,6 +10,7 @@ override.tf.json
 .terraform.lock.hcl
 staging.tfbackend
 staging.tfvars
+staging.tf
 
 # original
 .env
