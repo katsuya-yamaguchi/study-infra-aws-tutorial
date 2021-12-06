@@ -1,0 +1,5 @@
+bucket   = "sample-bucket"
+region   = "ap-northeast-1"
+key      = "study-infra-tutorial/staging.tfstate"
+encrypt  = true
+role_arn = "arn:aws:iam::111111111:role/study-infra-terraform-role"
