@@ -2,7 +2,6 @@ FROM alpine:3.15.0
 
 ARG AWS_ACCESS_KEY
 ARG AWS_SECRET_ACCESS_KEY
-ARG ENV
 
 ENV TF_URL https://releases.hashicorp.com/terraform/1.0.11/terraform_1.0.11_linux_amd64.zip
 ENV ROOT_PATH /root
@@ -24,7 +23,6 @@ RUN echo '[default]' >> config && \
     echo "aws_access_key_id = ${AWS_ACCESS_KEY}" >> credentials && \
     echo "aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >> credentials
 
-COPY ./modules ${INFRA_ROOT}/modules
-COPY ./staging ${INFRA_ROOT}/staging
+COPY ./terraform ${INFRA_ROOT}
 
-WORKDIR ${INFRA_ROOT}/${ENV}
+WORKDIR ${INFRA_ROOT}
