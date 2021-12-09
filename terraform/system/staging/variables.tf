@@ -19,3 +19,25 @@ variable "network_remote_state_config" {
     role_arn = "arn:aws:iam::XXXXXXXXXXX:role/study-infra-terraform-role"
   }
 }
+
+
+##########################
+# Launch Template
+##########################
+variable "ami_id" {
+  type        = string
+  default     = "ami-0a428a8bcfce0f804"
+  description = "パラメータストアから取得した2021/11/25時点のAMI。https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/ecs-optimized_AMI.html"
+}
+variable "instance_type" {
+  type    = string
+  default = "t3.nano"
+}
+variable "key_name" {
+  type    = string
+  default = "ecs-container-stg"
+}
+variable "cluster_name" {
+  type    = string
+  default = "study-infra-web"
+}

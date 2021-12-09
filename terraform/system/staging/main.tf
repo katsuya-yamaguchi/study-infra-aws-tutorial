@@ -19,7 +19,11 @@ data "terraform_remote_state" "network" {
 }
 
 module "web" {
-  source      = "../modules/web"
-  common_tags = var.common_tags
-  vpc_id      = data.terraform_remote_state.network.outputs.vpc_id
+  source        = "../modules/web"
+  common_tags   = var.common_tags
+  vpc_id        = data.terraform_remote_state.network.outputs.vpc_id
+  ami_id        = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  cluster_name  = var.cluster_name
 }
