@@ -13,7 +13,13 @@ provider "aws" {
   }
 }
 
+data "terraform_remote_state" "network" {
+  backend = "s3"
+  config  = var.network_remote_state_config
+}
+
 module "web" {
   source      = "../modules/web"
   common_tags = var.common_tags
+  vpc_id      = data.terraform_remote_state.network.outputs.vpc_id
 }
