@@ -1,6 +1,5 @@
-variable "iam_role_for_terraform" {
-  default = "arn:aws:iam::XXXXXXXXXXX:role/study-infra-terraform-role"
-}
+variable "iam_role_for_terraform" {}
+variable "network_remote_state_config" {}
 
 variable "common_tags" {
   type = map(string)
@@ -9,17 +8,6 @@ variable "common_tags" {
     System = "study-infra-tutorial"
   }
 }
-
-variable "network_remote_state_config" {
-  type = map(string)
-  default = {
-    bucket   = "terraform-state-develop-0001"
-    key      = "study-infra-tutorial/staging.tfstate"
-    region   = "ap-northeast-1"
-    role_arn = "arn:aws:iam::XXXXXXXXXXX:role/study-infra-terraform-role"
-  }
-}
-
 
 ##########################
 # Launch Template
