@@ -29,3 +29,16 @@ variable "cluster_name" {
   type    = string
   default = "study-infra-web"
 }
+
+##########################
+# S3
+##########################
+variable "logging_bucket" {
+  type = map(string)
+  default = {
+    name                     = "study-infra-logging"
+    expiration_days          = 90 # ３ヶ月
+    transition_days          = 30 # １ヶ月
+    transition_storage_class = "GLACIER"
+  }
+}
