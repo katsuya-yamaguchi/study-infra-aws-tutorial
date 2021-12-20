@@ -19,13 +19,17 @@ data "terraform_remote_state" "network" {
 }
 
 module "web" {
-  source            = "../modules/web"
-  common_tags       = var.common_tags
-  vpc_id            = data.terraform_remote_state.network.outputs.vpc_id
-  ami_id            = var.ami_id
-  instance_type     = var.instance_type
-  key_name          = var.key_name
-  cluster_name      = var.cluster_name
+  source                             = "../modules/web"
+  common_tags                        = var.common_tags
+  vpc_id                             = data.terraform_remote_state.network.outputs.vpc_id
+  ami_id                             = var.ami_id
+  instance_type                      = var.instance_type
+  key_name                           = var.key_name
+  cluster_name                       = var.cluster_name
+  az                                 = var.az
+  public_subnets_id                  = data.terraform_remote_state.network.outputs.public_subnets_id
+  s3_logging_bucket                  = module.common.s3_logging_bucket
+  ssl_certificate_study_infra_tk_arn = module.common.ssl_certificate_study_infra_tk_arn
 }
 
 module "common" {

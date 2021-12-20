@@ -34,3 +34,23 @@ resource "aws_s3_bucket_public_access_block" "logging" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
+data "aws_caller_identity" "self" {}
+
+data "aws_iam_policy_document" "alb" {
+  statement {
+    principals {
+      type = "AWS"
+      identifiers = ["arn:aws:iam::582318560864:root"]
+    }
+    actions = [
+      "s3:PutObject"
+    ]
+    resources = ["arn:aws:s3:::${aws_s3_bucket.logging.id}/AWSLogs/${data.aws_caller_identity.self.account_id}/*"]
+  }
+}
+
+resource "aws_s3_bucket_policy" "logging" {
+  bucket = aws_s3_bucket.logging.id
+  policy = data.aws_iam_policy_document.alb.json
+}
