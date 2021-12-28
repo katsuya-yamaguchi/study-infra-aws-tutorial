@@ -30,6 +30,15 @@ variable "cluster_name" {
   default = "study-infra-web"
 }
 
+
+##########################
+# ASG
+##########################
+variable "az" {
+  type    = list(any)
+  default = ["ap-northeast-1a", "ap-northeast-1c"]
+}
+
 ##########################
 # S3
 ##########################
