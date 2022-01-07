@@ -82,10 +82,10 @@ resource "aws_launch_template" "web" {
     enabled = false
   }
 
-  network_interfaces {
-    associate_public_ip_address = false
-    delete_on_termination       = true
-  }
+  # network_interfaces {
+  #   associate_public_ip_address = false
+  #   delete_on_termination       = true
+  # }
   vpc_security_group_ids = [
     aws_security_group.ecs_container_instance_web.id
   ]
