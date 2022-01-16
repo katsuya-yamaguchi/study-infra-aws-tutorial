@@ -14,7 +14,7 @@ resource "aws_launch_template" "web" {
   update_default_version = true
 
   block_device_mappings {
-    devisce_name            = "/dev/sdb"
+    device_name            = "/dev/xvdb"
     ebs {
       delete_on_termination = true
       encrypted             = false
